@@ -1,0 +1,14 @@
+server:
+  jetty:
+    max-http-post-size: 0
+  port: 9880
+  servlet:
+    context-path: /collect
+
+
+h2:
+  console:
+    enabled: true
+
+core:
+  debug: true  #调试开关

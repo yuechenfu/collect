@@ -1,0 +1,48 @@
+server:
+  jetty:
+    max-http-post-size: 0
+  port: 9880
+  servlet:
+    context-path: /collect
+
+spring:
+  datasource:
+    url: jdbc:mysql://172.168.2.16:3306/collect?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC
+    username: root
+    password: root@Hiveel889
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 30
+      auto-commit: true
+      idle-timeout: 30000
+      max-lifetime: 1800000
+      connection-test-query: SELECT 1
+
+  jackson:
+    default-property-inclusion: non_null
+
+
+feign:
+  hystrix:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+
+memcached:
+  host: 172.168.2.16
+  port: 11211
+
+
+core:
+  debug: true  #调试开关
+
+cisco:
+#  apiAddr: https://sandboxsdwan.cisco.com:8443
+  apiAddr: http://172.168.2.23:5500/s
+
